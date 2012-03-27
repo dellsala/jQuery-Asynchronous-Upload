@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>jQuery Asynchronous Upload</title>
+    <style type="text/css">
+    
+    #uploadButton {
+        padding: 0;
+        margin: 0;
+        border-radius: 5px;
+        background-color: #660;
+        color: #FFF;
+        width: 150px;
+        height: 40px;
+        border: none;
+        vertical-align: middle;
+    }
+
+    #uploadButton.disabled {
+        background-color: #999;
+    }
+    
+    #loading {
+        vertical-align: middle;
+        background-color: #FF9;
+    }
+
+
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="../jquery.uploader.js"></script>
+	<script>
+	
+$(function () {
+	$('#uploadButton').uploader({
+	    url : './upload.php',
+	    onStart : function (data) {
+	        $('#loading').show();
+	        this.$button.addClass('disabled');
+	    },
+	    onComplete : function (data) {
+	        $('#loading').hide();
+	        this.$button.removeClass('disabled');
+	        alert(data);
+	    }
+	});
+});
+	
+	</script>
+</head>
+<body>
+
+    <div>
+        <input type="button" id="uploadButton" value="Upload File">
+        <span id="loading" style="display:none;">Loading…</span>
+    </div>
+
+</body>
+</html>
