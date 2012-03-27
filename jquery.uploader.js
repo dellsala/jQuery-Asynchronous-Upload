@@ -40,10 +40,10 @@
         this.$frame = $('<iframe name="uploader_frame_' + this.id + '" src="about:blank" \/>');
         this.$frame.css("display", "none");
 
-        this.$input = $('<input type="file" name="'+this.options+'">');
+        this.$input = $('<input type="file" name="'+this.options.inputName+'">');
         this.$input.on('change', function () {
-            that.$input.attr('disabled', 'disabled');
             this.form.submit();
+            that.$input.attr('disabled', 'disabled');
             that.options.onStart.call(that);
         });
 
