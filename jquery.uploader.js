@@ -50,18 +50,22 @@
 
         // position upload over button
 
-        var buttonOffset = this.$button.offset();
-
-        this.$form
-            .width(this.$button.outerWidth())
-            .height(this.$button.outerHeight())
-            .css({
-                overflow : 'hidden',
-                position : 'absolute',
-                top : buttonOffset.top+'px',
-                left : buttonOffset.left+'px',
-                opacity: '0'
-            });
+        function repositionForm () {
+            var buttonOffset = that.$button.offset();
+            that.$form
+                .width(that.$button.outerWidth())
+                .height(that.$button.outerHeight())
+                .css({
+                    overflow : 'hidden',
+                    position : 'absolute',
+                    top : buttonOffset.top+'px',
+                    left : buttonOffset.left+'px',
+                    opacity: '0'
+                });
+        }
+        repositionForm();
+        
+        this.$button.on('hover', repositionForm);
 
         this.$input.css({
             fontSize : (this.$button.outerHeight() + 20) + 'px',
