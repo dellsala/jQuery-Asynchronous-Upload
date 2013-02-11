@@ -35,6 +35,10 @@
 $(function () {
 	$('#uploadButton').uploader({
 	    url : './upload.php',
+	    data : {
+	    	someKey : 'someValue',
+	    	field2 : 'hello world'
+	    },
 	    onStart : function (data) {
 	        $('#loading').show();
 	        this.$button.addClass('disabled');

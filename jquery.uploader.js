@@ -22,6 +22,7 @@
             url : 'upload.php',
             buttonElement : null,
             inputName : 'ajax_file',
+            data : {},
             onStart : function () {},
             onComplete : function (response) {}
         }, options);
@@ -46,7 +47,10 @@
             that.$input.attr('disabled', 'disabled');
             that.options.onStart.call(that);
         });
-
+        
+        for (var key in this.options.data) {
+            this.$form.append('<input type="hidden" name="'+key+'" name="'+key+'" value="'+this.options.data[key]+'"/>');
+        }
 
         // position upload over button
 
