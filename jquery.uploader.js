@@ -54,9 +54,14 @@
             that.options.onStart.call(that);
         });
         
-        for (var key in this.options.data) {
-            this.$form.append('<input type="hidden" name="'+key+'" name="'+key+'" value="'+this.options.data[key]+'"/>');
+        this.updateFormData = function (formData)
+        {
+            that.$form.find('input[type=hidden]').remove();
+            for (var key in formData) {
+                that.$form.append('<input type="hidden" name="'+key+'" name="'+key+'" value="'+formData[key]+'"/>');
+            }
         }
+        this.updateFormData(this.options.data);
 
         // position upload over button
 
