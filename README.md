@@ -8,6 +8,7 @@ Turns an element into an asynchronous file upload trigger.
 * bare-bones ajax file upload functionality
 * no built-in ui (other than a required trigger element)
 * hooks for attaching your own ui interactions
+* optionally post data along with the file
 * fully customizable server-side response handling/formatting
 * html4 iframe implementation only (no progress reporting)
 * single file upload per trigger
@@ -26,6 +27,10 @@ How to Use it
         $('#myUploadButton').uploader({
             url : '/some-upload-handler.php',
             inputName : 'my_upload_file', 
+            data : {   // optional
+                someKey : 'some value',
+                anotherKey : 'some other value'
+            }, 
             onStart : function () {
                 $('body').append('Upload started...');
             },
