@@ -1,14 +1,20 @@
 (function ($) {
 
 
+    $.uploader = {
+        instanceList : {}
+    };
+
     $.fn.uploader = function (options) {
     
         this.each(function (index) {
 
             var uploaderOptions = $.extend({}, options);
             uploaderOptions.buttonElement = this;
-            new Uploader(uploaderOptions);
-        
+            var uploader = new Uploader(uploaderOptions);
+            var uploaderId = $(this).attr('id') ? $(this).attr('id') : uploader.id;
+            $.uploader.instanceList[uploaderId] = uploader;
+            
         });
     
     }
